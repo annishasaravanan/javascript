@@ -1,0 +1,28 @@
+<script>
+    console.log(add(20,30));
+    //traditional method
+    function add(a,b){
+        var c=a+b;
+        return c;
+    }
+
+
+    //annonymous method
+      var addfunction=function (a,b){
+        var c=a+b;
+        return c;
+      }
+      console.log(addfunction(10,20));
+
+
+    //arrow function( single expression)
+    var addition=(a,b)=>a+b;
+    console.log(addition(4.5));
+
+    //multiple expression in arrow function
+    var findAverage =(a,b)=>{
+      var total=a+b;
+      var average=total/2;
+      return average;
+    }
+</script>

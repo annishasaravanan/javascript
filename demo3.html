@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h1>Guess the Number</h1>
+    <input type="number" id="guess">
+    <button onclick="checkguess()" id="guessBtn">Check Guess</button>
+    <p id="Result">You are wrong/right</p>
+    <p id="score">Score:10</p>
+
+    <script>
+        var guess = document.getElementById("guess");
+        var Result = document.getElementById("Result");
+        var score = document.getElementById("score");
+        var guessBtn = document.getElementById("guessBtn");
+
+        var totalscore = 10;
+        var randomNumber = Math.floor(Math.random() * 10) + 1; 
+
+        function checkguess() {
+            var userguess = parseInt(guess.value); 
+            console.log("Generated Number:", randomNumber);
+            console.log("User Guess:", userguess);
+
+            if (userguess === randomNumber) {
+                console.log("Right Guess!");
+                Result.textContent = "Right! You guessed the number.";
+                alert("You won!");
+                guessBtn.disabled = true;
+                guess.disabled = true;
+            } 
+            else {
+                totalscore--;
+                score.textContent = "Score: " + totalscore;
+                Result.textContent = "Wrong! Try Again.";
+
+                if (totalscore === 0) {
+                    Result.textContent = `Game Over! The correct number was ${randomNumber}`;
+                    alert(`You lost! The correct number was ${randomNumber}`);
+                    guessBtn.disabled = true;
+                    guess.disabled = true;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

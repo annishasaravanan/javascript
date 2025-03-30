@@ -1,0 +1,29 @@
+<script>
+    var classroom = {
+        "students":[
+            {
+                "name":"aaaaa",
+                "age":20,
+                "email":"aaaaa@gmail.com"
+                
+            },
+            {
+                "name":"bbbbbb",
+                "age":15,
+                "email":"bbbbbb@gmail.com"
+            }
+        ]
+    };
+    console.log(classroom.students);
+    
+    var stu={
+        "name":"cccc",
+        "age":22,
+        "email":"cccc@gmail.com"
+    };
+    classroom.students.unshift(stu);
+    console.log(classroom.students);
+
+    classroom.students.shift(stu);
+    console.log(classroom.students);
+</script>

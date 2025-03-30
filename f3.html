@@ -1,0 +1,11 @@
+<script>
+    var getPosts = async() =>{
+        var url="https://jsonplaceholder.typicode.com/posts";
+        //inbuild method in js to connect with API url(s)
+       var response = await fetch(url);
+      var postList =await response.json();
+      console.log(postList);
+
+    }
+    getPosts();
+</script>
