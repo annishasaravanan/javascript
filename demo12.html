@@ -1,0 +1,14 @@
+<script>
+    var a='one';
+    var b='two';//global
+    function callA()//parent 
+     {
+        console.log(a);
+      function callB()//child
+        {
+        // console.log(b);
+      }
+    callB();
+      }
+callA();
+</script>
