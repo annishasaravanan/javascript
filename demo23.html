@@ -1,0 +1,53 @@
+
+<script>
+console.log("Start");
+
+fetch("https://www.w3schools.com/angular/customers.php")
+  .then(response => response.json())
+  .then(data => {
+    console.log("Fetched Data:", data);
+  });
+
+console.log("End");
+
+</script>
+
+<!-- How the Callback Queue Works Here:
+console.log("Start") runs first (synchronous).
+
+fetch(...) starts an asynchronous HTTP request.
+
+The request is handled by the browser's Web APIs.
+
+console.log("End") runs next (synchronous).
+
+When the fetch response is ready, the browser:
+
+Sends the .then(...) callback to the microtask queue (not the regular callback queue!).
+
+The event loop checks if the call stack is empty.
+
+Once it's empty, it prioritizes microtasks (like .then()).
+
+The .then(data => {...}) runs and logs the fetched data.
+ -->
+
+
+
+ <!-- There are actually two queues:
+
+Macro Task Queue (Callback Queue) → for setTimeout, DOM events, etc.
+
+Micro Task Queue → for Promises (.then, async/await), MutationObserver, etc.
+
+Microtasks are processed before macrotasks! -->
+
+
+
+<!-- Call Stack:          | Event Loop:           | Queues:
+-------------------- | --------------------- | ------------------------
+console.log("Start") |                       |
+fetch(...)           |                       | Web API handles it
+console.log("End")   |                       |
+                     | Call Stack is empty → | Moves .then() to Microtask Queue
+.then(...)           | Event Loop runs it    | Executes the callback -->

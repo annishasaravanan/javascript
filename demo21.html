@@ -1,0 +1,29 @@
+<script>
+    //what is the callback function in javasscript
+
+    setTimeout(function () {
+        console.log("timer");
+    },5000);//This schedules the function to run after 5 seconds.
+
+// It’s non-blocking, meaning the code doesn't wait 5 seconds here.
+
+// JavaScript moves on to the next lines immediately.
+
+function x(y)
+{
+       console.log("x");
+       y();
+}
+x(function y()
+{
+        console.log("y");
+});
+
+// You're calling x() and passing another function y as an argument.
+
+// Inside x(), it logs "x" and then calls y() (the callback), which logs "y".
+
+
+
+    //javascript is a syn
+</script>
