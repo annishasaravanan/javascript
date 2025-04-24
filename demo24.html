@@ -1,0 +1,19 @@
+<script>
+    const promise = new Promise((resolve, reject) => {
+  // async operation
+  if (success) {
+    resolve("Data loaded");
+  } else {
+    reject("Error occurred");
+  }
+});
+
+promise
+  .then((result) => {
+    console.log("Success:", result);
+  })
+  .catch((error) => {
+    console.log("Failure:", error);
+  });
+
+</script>
