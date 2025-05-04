@@ -15,3 +15,4 @@ console.log(x,typeof x);
 
 
 console.log(Boolean("Annisha"));
+

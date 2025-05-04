@@ -1,0 +1,63 @@
+<script>
+const radius = [3, 1, 2, 4];
+
+const area = function(radius) {
+    return Math.PI * radius * radius;
+};
+
+const circumference = function(radius) {
+    return 2 * Math.PI * radius;
+};
+
+const diameter = function(radius) {
+    return 2 * radius;
+};
+
+Array.prototype.calculate = function(logic) {
+    const output = [];
+    for (let i = 0; i < this.length; i++) {
+        output.push(logic(this[i]));
+    }
+    return output;
+};
+
+console.log(radius.map(area));
+console.log(radius.calculate(area));
+
+//    You are adding a custom method called calculate() to all arrays using the prototype.
+
+// logic is a function (like area, circumference, etc.) that defines what to do with each element.
+
+// Inside:
+
+// You loop through the array (this refers to the array).
+
+// You apply the logic function to each element.
+
+// You collect the results in output[].
+
+
+
+//    console.log(calculate(radius,Circumference));
+//    console.log(calculate(radius,diameter));
+
+//     const calculateArea=function(radius){
+//         const output=[];
+//         for(let i=0;i<radius.length;i++)
+//     {
+//         output.push(Math.PI*radius[i]*radius[i]);
+//     }
+//     return output;
+//     }
+//    console.log(calculateArea(radius));
+
+//    const calculateCircumference=function (radius){
+//     const output=[];
+//     for(let i=0;i<radius.length;i++)
+//    {
+//     output.push(2*Math.PI*2*radius[i]);
+//    }
+//    return output;
+//    }
+//    console.log(calculateCircumference(radius));
+</script>

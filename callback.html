@@ -1,0 +1,22 @@
+<script>
+    console.log("start");
+function cb()
+{
+    console.log("callback");
+}
+cb();
+setTimeout(cb,0);
+console.log("end");
+    // setTimeout(function cb(){
+    //     console.log("callback");
+    // },0);
+    // console.log("end");
+
+    // let startDate=new Date().getTime();
+    // let endDate=startDate;
+    // while(endDate < startDate + 10000)
+    // {
+    //     endDate = new Date().getTime();
+    // }
+    // console.log("while expire");
+</script>
