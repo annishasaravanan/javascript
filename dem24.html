@@ -13,7 +13,8 @@ const diameter = function(radius) {
     return 2 * radius;
 };
 
-Array.prototype.calculate = function(logic) {
+Array.prototype.calculate = function(logic) { //Array.prototype.calculate: You're adding a custom method to all JavaScript arrays called calculate
+//Array.prototype is an object in JavaScript that allows you to add properties and methods that are shared across all array instances.
     const output = [];
     for (let i = 0; i < this.length; i++) {
         output.push(logic(this[i]));
