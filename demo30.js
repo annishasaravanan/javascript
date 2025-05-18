@@ -20,7 +20,6 @@ const cart=["shirt","pants","shoes"];
 //     console.log(data);
 // })
 
-
 function addToCart(item) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
