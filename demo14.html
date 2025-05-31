@@ -1,11 +1,21 @@
 <script>
-    let a = 10;
+//     let a = 10;
       
-{
-  let a = 20; // Shadows outer `a`
-  console.log(a); // ✅ 20
-  // var a=20;
-}
+// {
+//   let a = 20; // Shadows outer `a`
+//   console.log(a); // ✅ 20
+//   // var a=20;
+// }
+// console.log(a); // ✅ 10
 
-console.log(a); // ✅ 10
+var x=10
+{
+     let x=20;
+}
+function test()
+{
+  var y=30;
+  let y=40;
+  console.log(y);
+}
 </script>

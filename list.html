@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dynamic list</title>
+</head>
+<body>
+    <h3>Add item list</h3>
+    <input type="text" id="iteminput">
+    <button onclick=additem()>Add item</button>
+    <ul id="itemlist"></ul>
+    <script>
+        function additem()
+        {
+            var iteminput =document.getElementById("iteminput").value;
+            if(iteminput.trim() !==" ")
+
+        {
+            var itemlist =document.getElementById("itemlist");
+            var li=document.createElement("li");
+            li.textContent=iteminput;
+            itemlist.appendChild(li);
+            document.getElementById("iteminput").value="";
+
+            
+        }
+        }
+    </script>
+    
+</body>
+</html>

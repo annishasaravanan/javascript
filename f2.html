@@ -1,13 +1,13 @@
 <script>
     console.log(add(20,30));
-    //traditional method
+    //traditional method  A function with a name and can be reused anywhere in the code.
     function add(a,b){
         var c=a+b;
         return c;
     }
 
 
-    //annonymous method
+    //annonymous method  A function without a name, usually assigned to a variable.
       var addfunction=function (a,b){
         var c=a+b;
         return c;
@@ -15,9 +15,10 @@
       console.log(addfunction(10,20));
 
 
-    //arrow function( single expression)
+    //arrow function( single expression) A more concise syntax for writing functions. It automatically binds this and is especially useful in callbacks.
+
     var addition=(a,b)=>a+b;
-    console.log(addition(4.5));
+    console.log(addition(4,5));
 
     //multiple expression in arrow function
     var findAverage =(a,b)=>{
