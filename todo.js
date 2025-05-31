@@ -1,4 +1,3 @@
- 
  function attachEventListeners() {
     let count = 0;
 
