@@ -41,13 +41,20 @@
 // greet("Alice",sayGoodbye);
 
 
-function X()
+// function X()
+// {
+//   var i=1;
+//   setTimeout(() => {
+//     console.log(i);
+//   }, 3000);
+//   console.log("Annisha");
+// }
+// X();
+
+console.log("start");
+setTimeout(function (b)
 {
-  var i=1;
-  setTimeout(() => {
-    console.log(i);
-  }, 3000);
-  console.log("Annisha");
-}
-X();
+  console.log("callback");
+},5000);
+console.log("end");
 </script>

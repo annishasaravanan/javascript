@@ -14,7 +14,7 @@ function creatOrder(cart) {
 
 function proceedToPayment(orderId) {
     console.log(orderId);
-    return Promise.resolve('payment successful');
+    return Promise.resolve('payment successful ');
 }
 
 function showOrdrSummary(paymentInfo) {

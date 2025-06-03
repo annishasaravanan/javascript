@@ -23,13 +23,14 @@ function validateuser(userId)
         },2000);
     });
 }
+
 function addItemsToCart(userId, cart) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (cart.length === 0) {
         reject("Cart is empty");
       } else {
-        console.log("🛒 Items added to cart");
+        console.log("Items added to cart");
         resolve({ userId, cart });
       }
     }, 2000);
@@ -42,7 +43,7 @@ function applyDiscount(data) {
       if (data.cart.length === 0) {
         reject("Cart is empty");
       } else {
-        console.log("💸 Discount applied");
+        console.log(" Discount applied");
         data.discountApplied = true;
         resolve(data);
       }
