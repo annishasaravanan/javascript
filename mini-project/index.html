@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>4 in a Row Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #222;
+      color: #fff;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    #game {
+      display: grid;
+      grid-template-columns: repeat(7, 60px);
+      grid-template-rows: repeat(6, 60px);
+      gap: 5px;
+      justify-content: center;
+      margin: 20px auto;
+      background-color: #0055aa;
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    .cell {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #eee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .red {
+      background-color: red;
+    }
+
+    .yellow {
+      background-color: yellow;
+    }
+
+    #status {
+      font-size: 20px;
+      margin-top: 10px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎮 4 in a Row</h1>
+  <div id="game"></div>
+  <div id="status">Player Red's Turn</div>
+  <button onclick="resetGame()">Restart Game</button>
+
+  <script>
+    const ROWS = 6;
+    const COLS = 7;
+    let currentPlayer = 'red';
+    let gameOver = false;
+    const board = [];
+
+    const game = document.getElementById('game');
+    const status = document.getElementById('status');
+
+    // Initialize the board
+    function createBoard() {
+      game.innerHTML = '';
+      for (let r = 0; r < ROWS; r++) {
+        board[r] = [];
+        for (let c = 0; c < COLS; c++) {
+          const cell = document.createElement('div');
+          cell.classList.add('cell');
+          cell.dataset.row = r;
+          cell.dataset.col = c;
+          game.appendChild(cell);
+          board[r][c] = '';
+        }
+      }
+
+      const cells = document.querySelectorAll('.cell');
+      cells.forEach(cell => cell.addEventListener('click', handleClick));
+    }
+
+    // Drop the disc in the column
+    function handleClick(e) {
+      if (gameOver) return;
+
+      const col = parseInt(e.target.dataset.col);
+      for (let r = ROWS - 1; r >= 0; r--) {
+        if (!board[r][col]) {
+          board[r][col] = currentPlayer;
+          const cell = document.querySelector(`.cell[data-row="${r}"][data-col="${col}"]`);
+          cell.classList.add(currentPlayer);
+
+          if (checkWin(r, col)) {
+            status.textContent = `🎉 Player ${capitalize(currentPlayer)} Wins!`;
+            gameOver = true;
+          } else if (isBoardFull()) {
+            status.textContent = "It's a Draw!";
+            gameOver = true;
+          } else {
+            currentPlayer = currentPlayer === 'red' ? 'yellow' : 'red';
+            status.textContent = `Player ${capitalize(currentPlayer)}'s Turn`;
+          }
+          break;
+        }
+      }
+    }
+
+    function capitalize(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    // Check for winning move
+    function checkWin(row, col) {
+      return (
+        checkDirection(row, col, 0, 1) + checkDirection(row, col, 0, -1) > 2 || // horizontal
+        checkDirection(row, col, 1, 0) + checkDirection(row, col, -1, 0) > 2 || // vertical
+        checkDirection(row, col, 1, 1) + checkDirection(row, col, -1, -1) > 2 || // diagonal \
+        checkDirection(row, col, 1, -1) + checkDirection(row, col, -1, 1) > 2 // diagonal /
+      );
+    }
+
+    function checkDirection(r, c, dr, dc) {
+      let count = 0;
+      let player = board[r][c];
+      let row = r + dr;
+      let col = c + dc;
+
+      while (row >= 0 && row < ROWS && col >= 0 && col < COLS && board[row][col] === player) {
+        count++;
+        row += dr;
+        col += dc;
+      }
+      return count;
+    }
+
+    function isBoardFull() {
+      return board.flat().every(cell => cell);
+    }
+
+    function resetGame() {
+      currentPlayer = 'red';
+      gameOver = false;
+      status.textContent = `Player Red's Turn`;
+      createBoard();
+    }
+
+    createBoard(); // Start game
+  </script>
+
+</body>
+</html>
