@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I am Watching</title>
+</head>
+<style>
+     body {
+      margin: 0;
+      height: 100vh;
+      background: #000000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: sans-serif;
+    }
+
+    .eyes-container {
+      display: flex;
+      gap: 40px;
+    }
+
+    .eye {
+      width: 100px;
+      height: 100px;
+      background: white;
+      border: 5px solid black;
+      border-radius: 50%;
+      position: relative;
+    }
+
+    .pupil {
+      width: 30px;
+      height: 30px;
+      background: black;
+      border-radius: 50%;
+      position: absolute;
+      top: 35px;
+      left: 35px;
+      transition: 0.1s;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="eyes-container">
+    <div class="eye"><div class="pupil"></div></div>
+    <div class="eye"><div class="pupil"></div></div>
+  </div>
+
+  <script>
+    const pupils = document.querySelectorAll('.pupil');
+
+    document.addEventListener('mousemove', (event) => {
+      const mouseX = event.clientX;
+      const mouseY = event.clientY;
+
+      pupils.forEach((pupil) => {
+        const eye = pupil.parentElement;
+        const rect = eye.getBoundingClientRect();
+        const eyeCenterX = rect.left + rect.width / 2;
+        const eyeCenterY = rect.top + rect.height / 2;
+
+        const angle = Math.atan2(mouseY - eyeCenterY, mouseX - eyeCenterX);
+        const radius = 20;
+
+        const pupilX = Math.cos(angle) * radius;
+        const pupilY = Math.sin(angle) * radius;
+
+        pupil.style.transform = `translate(${pupilX}px, ${pupilY}px)`;
+      });
+    });
+  </script>
+
+</body>
+</html>
