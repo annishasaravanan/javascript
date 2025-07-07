@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Spin the Wheel</title>
+  <style>
+    body { font-family: Arial; text-align: center; padding: 50px; }
+    #spinBtn { padding: 10px 20px; font-size: 18px; }
+    #result { font-size: 24px; margin-top: 20px; color: green; }
+  </style>
+</head>
+<body>
+
+  <h1>🎡 Spin the Wheel!</h1>
+  <button id="spinBtn">Spin</button>
+  <div id="result">Result: -</div>
+
+  <script>
+    const prizes = ["Car", "Bike", "Vacation", "TV", "Nothing", "Laptop"];
+
+    function delay(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function spinWheel() {
+      const resultDiv = document.getElementById("result");
+      resultDiv.textContent = "Spinning... 🌀";
+
+      // Wait 2 seconds to simulate wheel spinning
+      await delay(2000);
+
+      // Pick a random prize
+      const prize = prizes[Math.floor(Math.random() * prizes.length)];
+      resultDiv.textContent = `🎁 You won: ${prize}!`;
+    }
+
+    document.getElementById("spinBtn").addEventListener("click", spinWheel);
+  </script>
+
+</body>
+</html>
